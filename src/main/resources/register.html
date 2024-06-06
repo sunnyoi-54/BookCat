@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffa7a7;
+            margin-bottom: 30px;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ffa7a7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #ff8b8b;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>회원가입</h1>
+    <input type="text" placeholder="아이디">
+    <input type="text" placeholder="비밀번호 (8자 이상)">
+    <input type="text" placeholder="비밀번호 확인">
+    <input type="text" placeholder="이름">
+    <input type="text" placeholder="이메일">
+    <input type="text" placeholder="닉네임">
+    <button onclick="handleRegister()">회원가입</button>
+</div>
+
+<script>
+    function handleRegister() {
+        // 입력된 정보 유효성 검사
+        // 서버로 회원 정보 전송
+        // 회원 가입 완료 후 메인 페이지로 이동
+        alert("회원가입이 완료되었습니다.");
+    }
+</script>
+</body>
+</html>

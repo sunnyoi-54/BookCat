@@ -27,7 +27,7 @@ public class MyPageController {
     }
 
     @GetMapping("/reports/new")
-    public String uploadMyPage(Model model){
+    public String uploadForm(Model model){
         model.addAttribute("MyPageForm", new MyPageForm());
         return "reports/uploadMyPageForm";
     }
@@ -83,14 +83,6 @@ public class MyPageController {
         return "redirect:/";
     }
 
-    // 책 읽은 날짜들을 캘린더 형식으로 반환하는 엔드포인트
-    @GetMapping("/mypage/{id}/calendar")
-    public String getReadDatesCalendar(@PathVariable Long id, Model model) {
-        Map<LocalDate, List<BookReport>> calendarData = myPageService.getReadDatesCalendar(id);
-        model.addAttribute("calendarData", calendarData);
-        return "calendarView"; // 캘린더를 표시할 뷰 이름
-    }
-
     @GetMapping("/mypage/{id}")
     public String viewMyPage(@PathVariable Long id, Model model) {
         Optional<MyPage> myPage = myPageService.findOne(id);
@@ -99,7 +91,13 @@ public class MyPageController {
             return "redirect:/"; // MyPage가 없으면 홈으로 리다이렉트
         }
 
+        // MyPage 정보를 모델에 추가
         model.addAttribute("myPage", myPage.get());
-        return "mypage/viewMyPage"; // MyPage를 표시할 뷰 이름
+
+        // 책을 읽은 날짜들의 캘린더 데이터를 가져와 모델에 추가
+        Map<LocalDate, List<BookReport>> calendarData = myPageService.getReadDatesCalendar(id);
+        model.addAttribute("calendarData", calendarData);
+
+        return "mypage/viewMyPage"; // MyPage와 캘린더를 표시할 뷰 이름
     }
 }

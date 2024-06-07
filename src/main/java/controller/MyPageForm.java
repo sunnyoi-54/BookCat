@@ -11,7 +11,6 @@ public class MyPageForm {
     private MyPageProfile myPageProfile;
     private String goal;
     private String genre;
-    private Long userId;
     private Member member;
 
 }

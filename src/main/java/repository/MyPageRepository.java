@@ -5,14 +5,12 @@ import domain.MyPage;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class MyPageRepository {
     private static final Map<Long, MyPage> store = new ConcurrentHashMap<>();
-    private static final AtomicLong sequence = new AtomicLong(0L);
 
     public MyPage save(MyPage myPage) {
-        myPage.setId(sequence.incrementAndGet());
+        myPage.setId(myPage.getMember().getId());
         store.put(myPage.getId(), myPage);
         return myPage;
     }

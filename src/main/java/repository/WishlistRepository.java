@@ -23,12 +23,6 @@ public class WishlistRepository {
         return Optional.ofNullable(store.get(id));
     }
 
-    public Optional<Wishlist> findByTitle(String title) {
-        return store.values().stream()
-                .filter(wishlist -> wishlist.getTitle().equals(title))
-                .findAny();
-    }
-
     public List<Wishlist> findAll() {
         return new ArrayList<>(store.values());
     }

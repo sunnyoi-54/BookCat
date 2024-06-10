@@ -1,23 +1,16 @@
-package domain;
+package com.example.BookRecord.controller;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import com.example.BookRecord.domain.Member;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
-public class Wishlist {
-    @Id
-    private Long id;
-
+public class WishlistForm {
     private String title;
     private String author;
     private String publisher;
     private String genre;
-
-    @OneToOne
     private Member member;
+
 }

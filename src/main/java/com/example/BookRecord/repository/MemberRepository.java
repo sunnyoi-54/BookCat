@@ -1,10 +1,12 @@
-package repository;
+package com.example.BookRecord.repository;
 
-import domain.Member;
+import com.example.BookRecord.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Repository
 public class MemberRepository {
 
     private static Map<Long, Member> store = new ConcurrentHashMap<>();

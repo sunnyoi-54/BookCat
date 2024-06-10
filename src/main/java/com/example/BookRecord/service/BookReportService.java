@@ -1,11 +1,13 @@
-package service;
+package com.example.BookRecord.service;
 
-import domain.BookReport;
-import repository.BookReportRepository;
+import com.example.BookRecord.domain.BookReport;
+import com.example.BookRecord.repository.BookReportRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class BookReportService {
     private final BookReportRepository bookReportRepository;
 

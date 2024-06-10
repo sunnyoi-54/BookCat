@@ -1,7 +1,7 @@
-package controller;
+package com.example.BookRecord.controller;
 
-import domain.BookReport;
-import domain.MyPage;
+import com.example.BookRecord.domain.BookReport;
+import com.example.BookRecord.domain.MyPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import service.MyPageService;
+import com.example.BookRecord.service.MyPageService;
 
 import java.time.LocalDate;
 import java.util.List;

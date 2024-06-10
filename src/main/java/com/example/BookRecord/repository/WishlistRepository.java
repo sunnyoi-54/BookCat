@@ -1,10 +1,12 @@
-package repository;
+package com.example.BookRecord.repository;
 
-import domain.Wishlist;
+import com.example.BookRecord.domain.Wishlist;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Repository
 public class WishlistRepository {
     private static Map<Long, Wishlist> store = new ConcurrentHashMap<>();
     private static long sequence = 0L;

@@ -1,11 +1,13 @@
-package service;
+package com.example.BookRecord.service;
 
-import domain.Wishlist;
-import repository.WishlistRepository;
+import com.example.BookRecord.domain.Wishlist;
+import com.example.BookRecord.repository.WishlistRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class WishlistService {
     private final WishlistRepository wishlistRepository;
 

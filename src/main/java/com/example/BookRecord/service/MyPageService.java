@@ -1,14 +1,16 @@
-package service;
+package com.example.BookRecord.service;
 
-import domain.BookReport;
-import domain.MyPage;
-import repository.MyPageRepository;
+import com.example.BookRecord.domain.BookReport;
+import com.example.BookRecord.domain.MyPage;
+import com.example.BookRecord.repository.MyPageRepository;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Service
 public class MyPageService {
     private final MyPageRepository myPageRepository;
 

@@ -1,15 +1,14 @@
-package controller;
+package com.example.BookRecord.controller;
 
-import domain.Member;
+import com.example.BookRecord.domain.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import service.MemberService;
+import com.example.BookRecord.service.MemberService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,38 +25,39 @@ public class MemberController {
     }
 
     @GetMapping("/")
+    public String home() {
+        return "redirect:/login";
+    }
+
+    @GetMapping("/register")
     public String registerForm(Model model) {
         model.addAttribute("memberForm", new MemberForm());
-        return "members/registerMemberForm";
+        return "members/register";
     }
 
     @PostMapping("/register")
     public String register(
-            @RequestParam String memberId,
-            @RequestParam String memberPwd,
-            @RequestParam String checkPwd,
-            @RequestParam String name,
-            @RequestParam String nickname,
+            @ModelAttribute MemberForm memberForm,
             RedirectAttributes redirectAttributes) {
 
         Member member = new Member();
-        member.setMemberId(memberId);
-        member.setMemberPwd(memberPwd);
-        member.setName(name);
-        member.setNickname(nickname);
+        member.setMemberId(memberForm.getMemberId());
+        member.setMemberPwd(memberForm.getMemberPwd());
+        member.setName(memberForm.getName());
+        member.setNickname(memberForm.getNickname());
 
         try {
-            memberService.join(member, memberPwd, checkPwd);
+            memberService.join(member, memberForm.getMemberPwd(), memberForm.getCheckPwd());
         } catch (IllegalArgumentException e) {
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
-            return "redirect:/";
+            return "redirect:/register";
         }
 
         redirectAttributes.addFlashAttribute("successMessage", "회원가입에 성공하였습니다.");
-        return "redirect:/";
+        return "redirect:/login";
     }
 
-    @GetMapping("/home")
+    @GetMapping("/login")
     public String loginForm(Model model) {
         model.addAttribute("memberForm", new MemberForm());
         return "members/login";
@@ -67,7 +67,7 @@ public class MemberController {
     public String login(@ModelAttribute MemberForm form, HttpServletRequest request) {
         Optional<Member> memberOptional = memberService.login(form.getMemberId(), form.getMemberPwd());
         if (memberOptional.isEmpty()) {
-            return "redirect:/home";
+            return "redirect:/login";
         }
 
         HttpSession session = request.getSession();
@@ -78,7 +78,7 @@ public class MemberController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping("/members")

@@ -1,4 +1,4 @@
-package controller;
+package com.example.BookRecord.controller;
 
 
 import lombok.Getter;
@@ -12,4 +12,5 @@ public class MemberForm {
     private String memberPwd;
     private String nickname;
     private String email;
+    private String checkPwd;
 }

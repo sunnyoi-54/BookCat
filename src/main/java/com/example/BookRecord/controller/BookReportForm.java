@@ -1,8 +1,8 @@
-package controller;
+package com.example.BookRecord.controller;
 
-import domain.BookData;
-import domain.BookMemberData;
-import domain.Member;
+import com.example.BookRecord.domain.BookData;
+import com.example.BookRecord.domain.BookMemberData;
+import com.example.BookRecord.domain.Member;
 import lombok.Getter;
 import lombok.Setter;
 

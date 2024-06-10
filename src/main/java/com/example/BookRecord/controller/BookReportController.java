@@ -1,12 +1,12 @@
-package controller;
+package com.example.BookRecord.controller;
 
-import domain.BookReport;
+import com.example.BookRecord.domain.BookReport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import service.BookReportService;
+import com.example.BookRecord.service.BookReportService;
 
 import java.util.List;
 import java.util.NoSuchElementException;

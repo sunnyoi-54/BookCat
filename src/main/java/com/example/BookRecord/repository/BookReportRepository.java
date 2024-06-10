@@ -1,12 +1,14 @@
-package repository;
+package com.example.BookRecord.repository;
 
-import domain.BookReport;
+import com.example.BookRecord.domain.BookReport;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
+@Repository
 public class BookReportRepository {
     private static final Map<Long, BookReport> store = new ConcurrentHashMap<>();
     private static final AtomicLong sequence = new AtomicLong(0L);

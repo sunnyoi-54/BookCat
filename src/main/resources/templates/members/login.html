@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>책냥이 - 홈</title>
+    <title>책냥이 - 로그인</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -83,23 +83,42 @@
         .btn-secondary:hover {
             background-color: #5a6268;
         }
+
+        .message {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .message-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .message-error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>책냥이</h1>
-    <form>
+    <div th:if="${successMessage}" class="message message-success" th:text="${successMessage}"></div>
+    <div th:if="${errorMessage}" class="message message-error" th:text="${errorMessage}"></div>
+    <form th:action="@{/login}" method="post" th:object="${memberForm}">
         <div class="form-group">
-            <label for="id">ID</label>
-            <input type="text" id="id" name="id" placeholder="아이디를 입력하세요">
+            <label for="memberId">ID</label>
+            <input type="text" id="memberId" name="memberId" th:field="*{memberId}" placeholder="아이디를 입력하세요">
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
+            <label for="memberPwd">Password</label>
+            <input type="password" id="memberPwd" name="memberPwd" th:field="*{memberPwd}" placeholder="비밀번호를 입력하세요">
         </div>
         <div class="buttons">
             <button type="submit" class="btn btn-primary">로그인</button>
-            <a href="#" class="btn btn-secondary">회원가입</a>
+            <a th:href="@{/register}" class="btn btn-secondary">회원가입</a>
         </div>
     </form>
 </div>

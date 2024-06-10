@@ -1,11 +1,13 @@
-package repository;
+package com.example.BookRecord.repository;
 
-import domain.MyPage;
+import com.example.BookRecord.domain.MyPage;
+import org.springframework.stereotype.Repository;
 
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Repository
 public class MyPageRepository {
     private static final Map<Long, MyPage> store = new ConcurrentHashMap<>();
 

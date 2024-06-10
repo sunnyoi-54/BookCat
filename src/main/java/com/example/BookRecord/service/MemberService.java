@@ -1,12 +1,14 @@
-package service;
+package com.example.BookRecord.service;
 
-import domain.Member;
+import com.example.BookRecord.domain.Member;
+import com.example.BookRecord.repository.MemberRepository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import repository.MemberRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 @Transactional // 데이터 저장 또는 수정 시 필요
 public class MemberService {
     private final MemberRepository memberRepository;

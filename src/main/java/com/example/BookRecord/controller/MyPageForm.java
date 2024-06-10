@@ -1,7 +1,7 @@
-package controller;
+package com.example.BookRecord.controller;
 
-import domain.Member;
-import domain.MyPageProfile;
+import com.example.BookRecord.domain.Member;
+import com.example.BookRecord.domain.MyPageProfile;
 import lombok.Getter;
 import lombok.Setter;
 
